@@ -41,11 +41,12 @@ function App() {
                         // types = {obj.types}
                     />
                 ))}
-                123
             </div>
             </div>
         </div>
+        testtesdttest
         </div>
+        
   );
 }
 
