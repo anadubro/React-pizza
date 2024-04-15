@@ -17,6 +17,7 @@ function App() {
     React.useEffect(() => {
         axios.get('http://127.0.0.1:8000/pizzas/').then(res => {
             setItems(res.data);
+            setIsLoading(false);
         })
     }, []);
     
@@ -31,20 +32,12 @@ function App() {
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {items.map((obj) => (isLoading ? <Skeleton /> :
-                    <PizzaBlock key={obj.id} {...obj}
-                    //Длинный вариант вместо {...obj}
-                        // title = {obj.title}
-                        // price = {obj.price}
-                        // imageUrl = {obj.imageUrl}
-                        // sizes = {obj.sizes}
-                        // types = {obj.types}
-                    />
-                ))}
+                {isLoading 
+                ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
+                : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
             </div>
             </div>
         </div>
-        testtesdttest
         </div>
         
   );
